@@ -1,0 +1,70 @@
+.box1{
+    width: 700px;
+    height: 450px;
+    background-color: rgba( 255, 255, 255, 0.65 );
+    text-align: center;
+    position: relative;
+    margin:auto;
+    margin-top:150px;
+    border-radius: 20px;
+}
+
+.login_h1{
+    font-size: 50px;
+    position:relative;
+    top:30px;
+}
+hr{
+    width:50%; 
+}
+
+.input_box{
+    padding:40px
+}
+input::placeholder{
+    color:aliceblue;
+    font-size:15px;
+}
+.id {
+    background: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-color:aliceblue;
+    border-width: 1px;
+    color:red;
+    
+}
+.id{
+    color:aliceblue;
+}
+.password{
+    position: relative;
+    top:30px;
+    background: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-color:aliceblue;
+    border-width: 1px;
+}
+.login_btn{
+    width:160px;
+    height:40px;
+    border:none;
+    border-radius: 10px;
+    background-color: #2222;
+    color:aliceblue;
+    margin:40px;
+    font-size: 18px;
+}
+.a_box a{
+    text-decoration: none; 
+    color: inherit;
+}
+.a_box_1{
+    margin-right: 30px;
+}
+.a_box_2{
+    margin-left: 30px;
+}

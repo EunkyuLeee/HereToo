@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-image: url("UMC 뭔가 간지나는 배경1 2.svg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .error {
+            color: red;
+        }
+        
+        .success {
+            color: green;
+        }
+    </style>
+    <link rel="stylesheet" href="Join.css">
+    
+    
+</head>
+<body>
+    <div class = "box1">
+        <div class ="login_h1_box">
+            <h1 class ="login_h1"> 회원가입 <hr/></h1> 
+        </div>
+        <div className ="input_box">
+            <div>
+                <p>이름</p>
+                <input type="text"class="id"></input> <br/>
+                <span id="idError"></span><br/>
+            </div>
+            
+            <div>
+                <p>닉네임</p>
+                <input type = "text" class = "name"></input><br/>
+                <span id="nameError"></span><br/>
+            </div>
+            <div>
+                <p>이메일</p>
+                <input type= "email" class = "email"></input><br/>  
+                <span id = "emailError"></span><br/>
+            </div>
+            <div>
+                <p>비밀번호</p>
+                <input type = "password"class = "password"></input><br/>
+                <span id = "passwordError"></span><br/>
+            </div>
+            <div>
+                <p>비밀번호 확인</p>
+                <input type = "password" class = "check_password"></input><br/>
+                <span id = "check_passwordError"></span><br/>
+            </div>
+        </div>
+        <button type = "button" class="open" id="open">가입하기</button>
+        
+        <div class="modal_wrapper" style="display: none">
+            <div class="modal">
+                <div class="modal_title">가입 성공!</div>
+                <p>umc 챌린저 가입을 축하합니다!!</p>
+                <div class="close_wrapper">
+                    <button type = "button" class = "close" id="close">닫기</button>
+                </div>
+            </div>
+         </div>
+    </div>    
+    <script>
+        
+        const IdInput = document.querySelector('.id');
+        const IdError = document.querySelector('#idError');
+        const NameInput = document.querySelector('.name');
+        const NameError = document.querySelector('#nameError');
+        const EmailInput = document.querySelector('.email');
+        const EmailError = document.querySelector('#emailError');
+        const PasswordInput = document.querySelector('.password');
+        const PasswordError = document.querySelector('#passwordError');
+        const PasswordCheckInput = document.querySelector('.check_password');
+        const PasswordCheckError = document.querySelector('#check_passwordError');
+        
+         //정규 표현식
+        const expNicknameText = /^[A-Za-z]{4,20}$/;
+        const expPwText = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+        const expNameText= /^[가-힣]+$/; // + 반복
+        const expEmailText = /^[A-Za-z-0-9\-\.]+@[A-Ja-z-0-9\-\.]+\.[A-Ja-z-0-9]+$/;
+
+        const open = document.getElementById("open");
+        const close = document.getElementById("close");
+        const modal = document.querySelector(".modal_wrapper");
+
+        open.onclick = () => {
+            modal.style.display = "flex";
+        };  
+
+        close.onclick = () => {
+            modal.style.display = "none";
+        };
+        function validateId() {
+            if (expNameText.test(IdInput.value)) {
+                IdError.innerText = '멋진이름입니다.';
+                IdError.classList.remove('error');
+                IdError.classList.add('success');
+            } else {
+                IdError.innerText = '2글자이상 6글자이하여 합니다.';
+                IdError.classList.remove('success');
+                IdError.classList.add('error');
+            }
+        }
+        function validateName() {
+            if (NameInput.value.length >= 2 && NameInput.value.length <= 6 ) {
+                NameError.innerText = '멋진 닉네임입니다.';
+                NameError.classList.remove('error');
+                NameError.classList.add('success');
+            } else {
+                NameError.innerText = '2자 이상, 6자 이하여야 합니다.';
+                NameError.classList.remove('success');
+                NameError.classList.add('error');
+            }
+        }
+        function validateEmail() {
+            if (expEmailText.test(EmailInput.value)) {
+                EmailError.innerText = '올바른 형식입니다.';
+                EmailError.classList.remove('error');
+                EmailError.classList.add('success');
+            } else {
+                EmailError.innerText = '올바른 이메일 형식이 아닙니다.';
+                EmailError.classList.remove('success');
+                EmailError.classList.add('error');
+            }
+        }
+        function validatePassword(){
+            if (expPwText.test(PasswordInput.value)) {
+                PasswordError.innerText = '올바른 형식입니다.';
+                PasswordError.classList.remove('error');
+                PasswordError.classList.add('success');
+            } else {
+                PasswordError.innerText = '8자 이상이여야 합니다.';
+                PasswordError.classList.remove('success');
+                PasswordError.classList.add('error');
+            }
+        }
+        function validatePasswordCheck(){
+            if (PasswordCheckInput.value == PasswordInput.value) {
+                PasswordCheckError.innerText = '올바른 형식입니다.';
+                PasswordCheckError.classList.remove('error');
+                PasswordCheckError.classList.add('success');
+            } else {
+                PasswordCheckError.innerText = '비밀번호가 일치 하지 않습니다';
+                PasswordCheckError.classList.remove('success');
+                PasswordCheckError.classList.add('error');
+            }
+        }
+        
+        document.querySelector('.id').addEventListener('input', validateId);
+        document.querySelector('.name').addEventListener('input', validateName);
+        document.querySelector('.email').addEventListener('input', validateEmail);
+        document.querySelector('.password').addEventListener('input', validatePassword);
+        document.querySelector('.check_password').addEventListener('input', validatePasswordCheck);
+        </script>
+        
+</body>
+
+</html>
