@@ -1,0 +1,22 @@
+.input_box input{
+    width: 700px;
+    height: 44px;
+    border-color: #b3b3b3;
+    border-style: solid;
+    border-radius: 5px;
+}
+.input_box span {
+    color: red;
+}
+
+.submit_button {
+    width: 700px;
+    height: 44px;
+    border-color: #b3b3b3;
+    border-style: solid;
+    border-radius: 5px;
+}
+.submit_button.active {
+    background-color: rgb(0, 36, 67);
+    color: aliceblue;
+  }
